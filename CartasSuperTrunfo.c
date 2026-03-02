@@ -51,6 +51,15 @@ main(){
   printf("\nDigite o numero de pontos turisticos da cidade escolhida: ");
   scanf("%d", &num_pontos_turis2);
 
+  //calculando a densidade
+  double densidade_populacional1 =  populacao1 / area_km2_1; //criei as variaveis aqui mesmo para não encher lá em cima
+  double densidade_populacional2 =  populacao2 / area_km2_2; //criei as variaveis aqui mesmo para não encher lá em cima
+
+  //calculando o percapita
+  double per_capita1 =  (pib1 * 1000000000) / populacao1; //Aqui eu tive que multiplicar po 1bilhao pra conta fazer sentido
+  double per_capita2 =  (pib2 * 1000000000) / populacao2; 
+
+
   printf("\n\n"); //separar e ficar mais legível tanto no console quanto no código
 
   printf("\nCarta 1:");
@@ -61,7 +70,9 @@ main(){
   printf("\nArea: %.2f km2", area_km2_1); //usei .2f para permitir apenas 2 número após a "vírgula", conforme exemplo
   printf("\nPIB: %.2f bilhoes de reais", pib1); //usei .2f para permitir apenas 2 número após a "vírgula", conforme exemplo
   printf("\nNumero de Pontos Turisticos: %d", num_pontos_turis1);
-  
+  printf("\nDensidade Populacional: %.2f hab/km2", densidade_populacional1);
+  printf("\nPIB per Capita: %.2f reais", per_capita1);
+
   printf("\n");
   
   printf("\nCarta 2:");
@@ -72,7 +83,8 @@ main(){
   printf("\nArea: %.2f km2", area_km2_2); //usei .2f para permitir apenas 2 número após a "vírgula", conforme exemplo
   printf("\nPIB: %.2f bilhoes de reais", pib2); //usei .2f para permitir apenas 2 número após a "vírgula", conforme exemplo
   printf("\nNumero de Pontos Turisticos: %d", num_pontos_turis2);
-
+  printf("\nDensidade Populacional: %.2f hab/km2", densidade_populacional2);
+  printf("\nPIB per Capita: %.2f reais", per_capita2);
 
   return 0;
 }
