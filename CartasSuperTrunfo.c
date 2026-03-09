@@ -6,7 +6,8 @@ main(){
 
 
   char estado1, estado2, codigo_carta1[10], codigo_carta2[10], nome_cidade1[20], nome_cidade2[20]; //declarando todas as variáveis 
-  int populacao1, populacao2, num_pontos_turis1, num_pontos_turis2;
+  int  num_pontos_turis1, num_pontos_turis2;
+  unsigned long int populacao1, populacao2;
   float area_km2_1, area_km2_2, pib1, pib2;
 
   printf("--- Cadastrando Cartas ---");
@@ -22,7 +23,7 @@ main(){
   fgets(nome_cidade1, 20, stdin); //usei fgets pelo nome da cidade poder ter espaços, conforme exemplo São Paulo
   nome_cidade1[strcspn(nome_cidade1, "\n")] = 0; //usado conforme mostrado no texto da aula
   printf("\nDigite a populacao da cidade escolhida: ");
-  scanf("%d", &populacao1);
+  scanf("%u", &populacao1);
   printf("\nDigite a area em km2 da cidade escolhida: ");
   scanf("%f", &area_km2_1);
   printf("\nDigite o PIB em bilhoes de reais da cidade escolhida: ");
@@ -43,7 +44,7 @@ main(){
   fgets(nome_cidade2, 20, stdin); //usei fgets pelo nome da cidade poder ter espaços, conforme exemplo Rio de janeiro
   nome_cidade2[strcspn(nome_cidade2, "\n")] = 0; //usado conforme mostrado no texto da aula
   printf("\nDigite a populacao da cidade escolhida: ");
-  scanf("%d", &populacao2);
+  scanf("%u", &populacao2);
   printf("\nDigite a area em km2 da cidade escolhida: ");
   scanf("%f", &area_km2_2);
   printf("\nDigite o PIB em bilhoes de reais da cidade escolhida: ");
@@ -59,6 +60,11 @@ main(){
   double per_capita1 =  (pib1 * 1000000000) / populacao1; //Aqui eu tive que multiplicar po 1bilhao pra conta fazer sentido
   double per_capita2 =  (pib2 * 1000000000) / populacao2; 
 
+  float super_poder_1, super_poder_2;
+
+  super_poder_1 = (float) populacao1 + area_km2_1 + pib1 + num_pontos_turis1 + per_capita1 + (1 / densidade_populacional1);
+  super_poder_2 = (float) populacao2 + area_km2_2 + pib2 + num_pontos_turis2 + per_capita2 + (1 / densidade_populacional2);
+
 
   printf("\n\n"); //separar e ficar mais legível tanto no console quanto no código
 
@@ -66,12 +72,13 @@ main(){
   printf("\nEstado: %c", estado1);
   printf("\nCodigo: %s", codigo_carta1);
   printf("\nNome da Cidade: %s", nome_cidade1);
-  printf("\nPopulacao: %d", populacao1);
+  printf("\nPopulacao: %u", populacao1);
   printf("\nArea: %.2f km2", area_km2_1); //usei .2f para permitir apenas 2 número após a "vírgula", conforme exemplo
   printf("\nPIB: %.2f bilhoes de reais", pib1); //usei .2f para permitir apenas 2 número após a "vírgula", conforme exemplo
   printf("\nNumero de Pontos Turisticos: %d", num_pontos_turis1);
   printf("\nDensidade Populacional: %.2f hab/km2", densidade_populacional1);
   printf("\nPIB per Capita: %.2f reais", per_capita1);
+  printf("\nSuper poder: %.2f", super_poder_1);
 
   printf("\n");
   
@@ -79,12 +86,28 @@ main(){
   printf("\nEstado: %c", estado2);
   printf("\nCodigo: %s", codigo_carta2);
   printf("\nNome da Cidade: %s", nome_cidade2);
-  printf("\nPopulacao: %d", populacao2);
+  printf("\nPopulacao: %u", populacao2);
   printf("\nArea: %.2f km2", area_km2_2); //usei .2f para permitir apenas 2 número após a "vírgula", conforme exemplo
   printf("\nPIB: %.2f bilhoes de reais", pib2); //usei .2f para permitir apenas 2 número após a "vírgula", conforme exemplo
   printf("\nNumero de Pontos Turisticos: %d", num_pontos_turis2);
   printf("\nDensidade Populacional: %.2f hab/km2", densidade_populacional2);
   printf("\nPIB per Capita: %.2f reais", per_capita2);
+  printf("\nSuper poder: %.2f", super_poder_1);
+
+  printf("\n\n\n");
+
+  printf("Comparacao de cartas: \n");
+  printf("Carta 1 = 1 e Carta 2 = 0\n");
+  printf("\n");
+  printf("Populacao: %d\n", populacao1 > populacao2);
+  printf("Area: %d\n", area_km2_1 > area_km2_2);
+  printf("PIB: %d\n", pib1 > pib2);
+  printf("Pontos Turisticos: %d\n", num_pontos_turis1 > num_pontos_turis2);
+  printf("Densidade Populacional: %d\n", densidade_populacional1 > densidade_populacional2);
+  printf("PIB per Capita: %d\n", per_capita1 > per_capita2);
+  printf("Super Poder: %d\n", super_poder_1 > super_poder_2);
+
+ 
 
   return 0;
 }
